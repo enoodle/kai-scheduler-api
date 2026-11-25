@@ -44,6 +44,11 @@ type QueueSpec struct {
 	// Minimum runtime of a job in queue before it can be reclaimed.
 	// +optional
 	ReclaimMinRuntime *metav1.Duration `json:"reclaimMinRuntime,omitempty"`
+
+	// Minimum runtime of a job in queue before it can be moved by consolidation.
+	// Inherits from the nearest parent queue when unset, then the scheduler default.
+	// +optional
+	ConsolidationMinRuntime *metav1.Duration `json:"consolidationMinRuntime,omitempty"`
 }
 
 // QueueStatus defines the observed state of Queue
